@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+*.pyc
+__pycache__/
+*.egg-info/
+.DS_Store
+*.log
+.env.local
+.env.*.local
+*.tsbuildinfo
+backend/models/
