@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '@/pages/HomePage.vue'
 import CropPage from '@/pages/CropPage.vue'
 import CompressPage from '@/pages/CompressPage.vue'
+import PrivacyPage from '@/pages/PrivacyPage.vue'
+import TermsPage from '@/pages/TermsPage.vue'
+import ContactPage from '@/pages/ContactPage.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -20,6 +23,21 @@ const router = createRouter({
       path: '/compress',
       name: 'compress',
       component: CompressPage
+    },
+    {
+      path: '/privacy',
+      name: 'privacy',
+      component: PrivacyPage
+    },
+    {
+      path: '/terms',
+      name: 'terms',
+      component: TermsPage
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: ContactPage
     }
   ]
 })

@@ -176,7 +176,7 @@ function handleReset() {
         <div class="text-center">
           <Shield class="w-10 h-10 text-blue-500 mx-auto mb-3" />
           <h3 class="font-semibold text-gray-900 mb-2">Privacy Safe</h3>
-          <p class="text-sm text-gray-500">Photos processed locally, never uploaded or stored</p>
+          <p class="text-sm text-gray-500">Watermark removal processes your mask locally. We do not store your images.</p>
         </div>
         <div class="text-center">
           <Zap class="w-10 h-10 text-blue-500 mx-auto mb-3" />

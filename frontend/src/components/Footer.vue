@@ -4,6 +4,11 @@
       <p class="text-sm text-gray-400 mb-1">
         Free Online Image Tools — Watermark Removal · ID Photo Crop · Image Compression
       </p>
+      <div class="flex items-center justify-center gap-4 mt-2 mb-2">
+        <router-link to="/privacy" class="text-xs text-gray-400 hover:text-gray-600">Privacy Policy</router-link>
+        <router-link to="/terms" class="text-xs text-gray-400 hover:text-gray-600">Terms of Service</router-link>
+        <router-link to="/contact" class="text-xs text-gray-400 hover:text-gray-600">Contact</router-link>
+      </div>
       <p class="text-xs text-gray-300">
         For photos you own or have permission to use © 2026
       </p>

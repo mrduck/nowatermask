@@ -2,6 +2,15 @@ const API_BASE = import.meta.env.PROD
   ? (import.meta.env.VITE_API_BASE || 'https://nowatermask.onrender.com/api')
   : '/api'
 
+async function apiFetch(path: string, body: FormData): Promise<Blob> {
+  const res = await fetch(`${API_BASE}${path}`, { method: 'POST', body })
+  if (!res.ok) {
+    const text = await res.text().catch(() => '')
+    throw new Error(`API ${res.status}: ${text || res.statusText}`)
+  }
+  return res.blob()
+}
+
 export async function removeWatermarkManual(
   file: File,
   maskBlob: Blob,
@@ -12,9 +21,8 @@ export async function removeWatermarkManual(
   formData.append('file', file)
   formData.append('mask', maskBlob, 'mask.png')
   onProgress?.(30)
-  const res = await fetch(`${API_BASE}/remove/manual`, { method: 'POST', body: formData })
+  const blob = await apiFetch('/remove/manual', formData)
   onProgress?.(80)
-  const blob = await res.blob()
   onProgress?.(100)
   return blob
 }
@@ -32,18 +40,14 @@ export async function cropPhoto(
   formData.append('h', String(h))
   formData.append('target_w', String(targetW))
   formData.append('target_h', String(targetH))
-  const res = await fetch(`${API_BASE}/crop`, { method: 'POST', body: formData })
-
-  return res.blob()
+  return apiFetch('/crop', formData)
 }
 
 export async function generateLayout(file: File, spec: string): Promise<Blob> {
   const formData = new FormData()
   formData.append('file', file)
   formData.append('spec', spec)
-  const res = await fetch(`${API_BASE}/layout`, { method: 'POST', body: formData })
-
-  return res.blob()
+  return apiFetch('/layout', formData)
 }
 
 export async function compressImage(file: File, quality: number, format: string): Promise<Blob> {
@@ -51,6 +55,5 @@ export async function compressImage(file: File, quality: number, format: string)
   formData.append('file', file)
   formData.append('quality', String(quality))
   formData.append('fmt', format)
-  const res = await fetch(`${API_BASE}/compress`, { method: 'POST', body: formData })
-  return res.blob()
+  return apiFetch('/compress', formData)
 }
